@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Development/Android/PUBST/app/src/main/res/drawable/assignment.xml" value="0.109" />
+        <entry key="..\:/Development/Android/PUBST/app/src/main/res/drawable/attendance.xml" value="0.109" />
+        <entry key="..\:/Development/Android/PUBST/app/src/main/res/drawable/classtest.xml" value="0.109" />
+        <entry key="..\:/Development/Android/PUBST/app/src/main/res/drawable/home_assignment_bg.xml" value="0.109" />
+        <entry key="..\:/Development/Android/PUBST/app/src/main/res/drawable/home_classTest_bg.xml" value="0.109" />
+        <entry key="..\:/Development/Android/PUBST/app/src/main/res/drawable/home_class_test_bg.xml" value="0.109" />
+        <entry key="..\:/Development/Android/PUBST/app/src/main/res/drawable/home_classes_bg.xml" value="0.109" />
+        <entry key="..\:/Development/Android/PUBST/app/src/main/res/drawable/home_classtest_bg.xml" value="0.109" />
+        <entry key="..\:/Development/Android/PUBST/app/src/main/res/drawable/ic_violet_13.xml" value="0.109" />
+        <entry key="..\:/Development/Android/PUBST/app/src/main/res/drawable/presentation.xml" value="0.109" />
+        <entry key="..\:/Development/Android/PUBST/app/src/main/res/drawable/success_diaogue_bg.xml" value="0.1" />
+        <entry key="..\:/Development/Android/PUBST/app/src/main/res/layout/activity_bottom_nav.xml" value="0.1578125" />
+        <entry key="..\:/Development/Android/PUBST/app/src/main/res/layout/activity_main.xml" value="0.1578125" />
+        <entry key="..\:/Development/Android/PUBST/app/src/main/res/layout/content_main.xml" value="0.1578125" />
+        <entry key="..\:/Development/Android/PUBST/app/src/main/res/layout/fragment_class_room.xml" value="0.14375" />
+        <entry key="..\:/Development/Android/PUBST/app/src/main/res/layout/fragment_dashboard.xml" value="0.16666666666666666" />
+        <entry key="..\:/Development/Android/PUBST/app/src/main/res/layout/fragment_notice.xml" value="0.1578125" />
+        <entry key="..\:/Development/Android/PUBST/app/src/main/res/layout/success_dialogue.xml" value="0.1578125" />
+        <entry key="..\:/Development/Android/PUBST/app/src/main/res/menu/menu_main.xml" value="0.1578125" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

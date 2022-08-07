@@ -1,0 +1,12 @@
+<resources>
+
+    <style name="Widget.Theme.Ahlehadeeth.ButtonBar.Fullscreen" parent="">
+        <item name="android:background">#B8B6B6</item>
+        <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>
+    </style>
+
+    <style name="SlidingDialogAnimation">
+        <item name="android:windowEnterAnimation">@android:anim/bounce_interpolator</item>
+        <item name="android:windowExitAnimation">@android:anim/slide_out_right</item>
+    </style>
+</resources>
