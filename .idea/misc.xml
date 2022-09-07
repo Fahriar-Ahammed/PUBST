@@ -6,6 +6,7 @@
         <entry key="..\:/Development/Android/PUBST/app/src/main/res/drawable/assignment.xml" value="0.109" />
         <entry key="..\:/Development/Android/PUBST/app/src/main/res/drawable/attendance.xml" value="0.109" />
         <entry key="..\:/Development/Android/PUBST/app/src/main/res/drawable/classtest.xml" value="0.109" />
+        <entry key="..\:/Development/Android/PUBST/app/src/main/res/drawable/create_attendance_bg.xml" value="0.1115" />
         <entry key="..\:/Development/Android/PUBST/app/src/main/res/drawable/home_assignment_bg.xml" value="0.109" />
         <entry key="..\:/Development/Android/PUBST/app/src/main/res/drawable/home_classTest_bg.xml" value="0.109" />
         <entry key="..\:/Development/Android/PUBST/app/src/main/res/drawable/home_class_test_bg.xml" value="0.109" />
@@ -13,13 +14,16 @@
         <entry key="..\:/Development/Android/PUBST/app/src/main/res/drawable/home_classtest_bg.xml" value="0.109" />
         <entry key="..\:/Development/Android/PUBST/app/src/main/res/drawable/ic_violet_13.xml" value="0.109" />
         <entry key="..\:/Development/Android/PUBST/app/src/main/res/drawable/presentation.xml" value="0.109" />
+        <entry key="..\:/Development/Android/PUBST/app/src/main/res/drawable/routine_item.xml" value="0.1115" />
         <entry key="..\:/Development/Android/PUBST/app/src/main/res/drawable/success_diaogue_bg.xml" value="0.1" />
         <entry key="..\:/Development/Android/PUBST/app/src/main/res/layout/activity_bottom_nav.xml" value="0.1578125" />
         <entry key="..\:/Development/Android/PUBST/app/src/main/res/layout/activity_main.xml" value="0.1578125" />
         <entry key="..\:/Development/Android/PUBST/app/src/main/res/layout/content_main.xml" value="0.1578125" />
         <entry key="..\:/Development/Android/PUBST/app/src/main/res/layout/fragment_class_room.xml" value="0.14375" />
         <entry key="..\:/Development/Android/PUBST/app/src/main/res/layout/fragment_dashboard.xml" value="0.16666666666666666" />
+        <entry key="..\:/Development/Android/PUBST/app/src/main/res/layout/fragment_first.xml" value="0.1578125" />
         <entry key="..\:/Development/Android/PUBST/app/src/main/res/layout/fragment_notice.xml" value="0.1578125" />
+        <entry key="..\:/Development/Android/PUBST/app/src/main/res/layout/routine_item.xml" value="0.1578125" />
         <entry key="..\:/Development/Android/PUBST/app/src/main/res/layout/success_dialogue.xml" value="0.1578125" />
         <entry key="..\:/Development/Android/PUBST/app/src/main/res/menu/menu_main.xml" value="0.1578125" />
       </map>
