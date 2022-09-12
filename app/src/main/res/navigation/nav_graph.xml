@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/assignmentFragment">
 
     <fragment
         android:id="@+id/FirstFragment"
@@ -25,4 +25,9 @@
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/assignmentFragment"
+        android:name="com.app.pub_st.classroom.assignment.AssignmentFragment"
+        android:label="Assignment"
+        tools:layout="@layout/fragment_assignment" />
 </navigation>

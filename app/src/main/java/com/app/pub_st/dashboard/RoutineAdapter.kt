@@ -1,17 +1,13 @@
-package com.app.pub.attendance
+package com.app.pub_st.dashboard
 
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.app.pub_st.databinding.RoutineItemBinding
 
-/**
- * [RecyclerView.Adapter] that can display a [PlaceholderItem].
- * TODO: Replace the implementation with code for your data type.
- */
-class AttendanceAdapter(
-    private val values: List<AttendanceItems>,
-) : RecyclerView.Adapter<AttendanceAdapter.ViewHolder>() {
+class RoutineAdapter(
+    private val values: List<RoutineItems>,
+) : RecyclerView.Adapter<RoutineAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
@@ -28,7 +24,9 @@ class AttendanceAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
         holder.binding.run {
-            time.text = item.date
+            time.text = item.time
+            courseCode.text = item.course_code
+            courseName.text = item.course_title
         }
 
     }

@@ -24,6 +24,22 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical">
+            <Button
+                android:id="@+id/select_batch_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select Batch"
+                android:layout_margin="5dp"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/batch_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="20sp"/>
 
         </LinearLayout>
 
@@ -117,9 +133,9 @@
             android:text="Course" />
     </LinearLayout>
 
-    <LinearLayout
+    <ScrollView
         android:id="@+id/linearLayout4"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:orientation="vertical"
@@ -128,12 +144,214 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
         app:layout_constraintVertical_bias="0">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/routine_recycler"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </LinearLayout>
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/create_attendance_bg"
+                    android:elevation="5dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="9.45 AM   10.30 AM"
+                        android:textSize="20sp"
+                        android:textAlignment="center"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:layout_weight="2"
+                    android:elevation="5dp"
+                    android:background="@drawable/home_assignment_bg"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/nineAm_course_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/nineAm_course_code"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="15dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/nineAm_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/create_attendance_bg"
+                    android:elevation="5dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10.30 AM   11.15 AM"
+                        android:textSize="20sp"
+                        android:textAlignment="center"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:layout_weight="2"
+                    android:elevation="5dp"
+                    android:background="@drawable/classtest"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tenAm_course_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tenAm_course_code"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="15dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/tenAm_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/create_attendance_bg"
+                    android:elevation="5dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="11.15 AM  12.30 PM"
+                        android:textSize="20sp"
+                        android:textAlignment="center"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:layout_weight="2"
+                    android:elevation="5dp"
+                    android:background="@drawable/presentation"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/twelvePm_course_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/twelvePm_course_code"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="15dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/twelvePm_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+<!--        <androidx.viewpager2.widget.ViewPager2-->
+<!--            android:id="@+id/routine_slider"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            app:layout_constraintHeight_percent="0.86"-->
+<!--            android:adjustViewBounds="true"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/linearLayout3"-->
+<!--            app:layout_constraintVertical_bias="0.0" />-->
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

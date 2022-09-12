@@ -10,79 +10,109 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.FragmentActivity
-import androidx.recyclerview.widget.LinearLayoutManager
+import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import com.app.pub.attendance.AttendanceAdapter
-import com.app.pub.attendance.AttendanceItems
-import com.app.pub_st.R
+import com.app.pub_st.BottomNavActivity
 import com.app.pub_st.databinding.FragmentDashboardBinding
-import org.json.JSONArray
+import com.app.pub_st.dialogue.SelectBatchDialogue
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import org.json.JSONException
 import org.json.JSONObject
 
 class DashboardFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        sharedPreferences = requireActivity().getSharedPreferences("authToken", Context.MODE_PRIVATE)
-       // getAttendanceData()
+        sharedPreferences =
+            requireActivity().getSharedPreferences("authToken", Context.MODE_PRIVATE)
+        //fetchRoutineData()
+        CoroutineScope(Dispatchers.IO).launch {
+            fetchStudentData()
+            getAllDepartment()
+        }
         arguments?.let {
         }
     }
 
     lateinit var binding: FragmentDashboardBinding
-    private val attendanceItems = mutableListOf<AttendanceItems>()
     lateinit var sharedPreferences: SharedPreferences
     lateinit var editor: SharedPreferences.Editor
+    lateinit var selectBatchDialogue: SelectBatchDialogue
+    private var selectBatchBtnLoading = false
+    val bottomNavActivity:BottomNavActivity = BottomNavActivity()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentDashboardBinding.inflate(inflater, container, false)
-        fetchAttendanceData(activity,context)
-        with(binding){
-            routineRecycler.layoutManager = LinearLayoutManager(activity)
-            routineRecycler.adapter =
-                AttendanceAdapter(attendanceItems)
+        getRoutineData()
+        selectBatchDialogue = SelectBatchDialogue(requireActivity(), this@DashboardFragment);
+        editor = sharedPreferences.edit()
+        with(binding) {
+            batchName.text = sharedPreferences.getString("batch", "")
+            selectBatchBtn.setOnClickListener {
+                selectBatchDialogue.startLoadingDialogue()
+            }
         }
         return binding.root
+
     }
 
-    private fun getAttendanceData() {
-        attendanceItems.clear()
-        val attendance = sharedPreferences.getString("attendance","")
-        val jsonArray = JSONArray(attendance)
-        for (i in 0 until jsonArray.length()) {
-            val attendanceData: JSONObject = jsonArray.getJSONObject(i)
-            attendanceItems.add( AttendanceItems(
-                attendanceData.getString("created_at"),
-            )
-            )
+    private fun getRoutineData() {
+        val data = sharedPreferences.getString("routine","").toString()
+        Log.d(TAG, "getRoutineData: *****  $data")
+
+        val routineData = JSONObject(data)
+        val nineAm = routineData.getJSONObject("nine_am")
+        val TeacherNineAm = nineAm.getJSONObject("teacher")
+        val tenAm = routineData.getJSONObject("ten_am")
+        val TeacherTenAm = tenAm.getJSONObject("teacher")
+        val twelvePm = routineData.getJSONObject("twelve_pm")
+        val TeacherTwelvePm = twelvePm.getJSONObject("teacher")
+        with(binding) {
+            nineAmCourseCode.text = nineAm.getString("course_code")
+            nineAmCourseName.text = nineAm.getString("course_title")
+            nineAmTeacher.text = TeacherNineAm.getString("name")
+
+            tenAmCourseCode.text = tenAm.getString("course_code")
+            tenAmCourseName.text = tenAm.getString("course_title")
+            tenAmTeacher.text = TeacherTenAm.getString("name")
+
+            twelvePmCourseCode.text = twelvePm.getString("course_code")
+            twelvePmCourseName.text = twelvePm.getString("course_title")
+            twelvePmTeacher.text = TeacherTwelvePm.getString("name")
         }
+        if (selectBatchBtnLoading) {
+            selectBatchDialogue.dismissDialogue()
+            selectBatchBtnLoading = false
+        }
+
     }
 
-    fun fetchAttendanceData(act: FragmentActivity?, context: Context?) {
+    private suspend fun fetchStudentData() {
         val sharedPreferences: SharedPreferences =
-            act!!.getSharedPreferences("authToken", Context.MODE_PRIVATE)
+            requireActivity().getSharedPreferences("authToken", Context.MODE_PRIVATE)
+        val batchID = sharedPreferences.getString("batch_id", "")
         val batch = sharedPreferences.getString("batch", "")
-        val term = sharedPreferences.getString("term", "")
         val course = sharedPreferences.getString("course", "")
         val token = sharedPreferences.getString("token", "")
 
         val queue = Volley.newRequestQueue(context)
-        val url = "https://pub-backend.dreamitdevlopment.com/public/api/routine/create"
+        val url = "https://pub-backend.dreamitdevlopment.com/public/api/student/all?token=$token"
 
 // Request a string response from the provided URL.
         val stringRequest: StringRequest = object : StringRequest(Method.POST, url,
             Response.Listener { response ->
                 try {
-                    Log.d(TAG, "fetchAttendanceData:  $response")
-//                    editor = sharedPreferences.edit()
-//                    editor.putString("attendance",response)
-//                    editor.apply()
+                    val jsonObject = JSONObject(response)
+                    val student = jsonObject.getString("attendanceTaken")
+                    editor.putString("students", jsonObject.getString("student"))
+                    editor.putString("attendance_taken", jsonObject.getString("attendanceTaken"))
+                    editor.apply()
 
                 } catch (e: JSONException) {
                     e.printStackTrace()
@@ -91,13 +121,52 @@ class DashboardFragment : Fragment() {
             override fun getParams(): Map<String, String>? {
 
                 val params: MutableMap<String, String> = HashMap()
-                params["department"] = "CSE"
-                params["batch"] = "12th"
+                params["batch_id"] = batchID.toString()
+                params["batch"] = batch.toString()
+                params["course_name"] = course.toString()
                 return params
             }
         }
         // Add the request to the RequestQueue.
         queue.add(stringRequest)
+    }
+
+    private suspend fun getAllDepartment() {
+
+        val queue = Volley.newRequestQueue(activity)
+        val url = "https://pub-backend.dreamitdevlopment.com/public/api/department/all"
+// Request a string response from the provided URL.
+        val stringRequest = StringRequest(
+            Request.Method.GET, url,
+            { response -> // Display the first 500 characters of the response string.
+                try {
+                    editor.putString("all_department", response)
+                    editor.apply()
+
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+            }) { error -> Log.d(ContentValues.TAG, "onErrorResponse:    $error") }
+        queue.add(stringRequest)
+    }
+
+    fun selectBatch(department: String, batch: String, term: String) {
+        bottomNavActivity.fetchRoutineData(activity!!.applicationContext)
+        selectBatchBtnLoading = true
+        with(binding) {
+            batchName.text = batch
+            editor.putString("department", department)
+            editor.putString("batch", batch)
+            editor.putString("term", term)
+            editor.apply()
+
+            CoroutineScope(Dispatchers.IO).launch {
+                getRoutineData()
+                fetchStudentData()
+            }
+
+
+        }
     }
 
 
