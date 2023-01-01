@@ -26,7 +26,10 @@ class BottomNavActivity : AppCompatActivity() {
         sharedPreferences =getSharedPreferences("authToken", Context.MODE_PRIVATE)
         editor = sharedPreferences.edit()
         fetchRoutineData(applicationContext)
+    }
 
+    override fun onStart() {
+        super.onStart()
         val bottomNavigationView = findViewById<BottomNavigationView
                 >(R.id.bottom_navigation)
         val navController = findNavController(R.id.bottom_nav_fragment)
@@ -49,6 +52,7 @@ class BottomNavActivity : AppCompatActivity() {
                 else -> false
             }
         }
+
     }
 
     fun fetchRoutineData(applicationContext: Context) {

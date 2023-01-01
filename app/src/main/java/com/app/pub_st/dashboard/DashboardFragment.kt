@@ -49,7 +49,7 @@ class DashboardFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentDashboardBinding.inflate(inflater, container, false)
-        getRoutineData()
+//        getRoutineData()
         selectBatchDialogue = SelectBatchDialogue(requireActivity(), this@DashboardFragment);
         editor = sharedPreferences.edit()
         with(binding) {
